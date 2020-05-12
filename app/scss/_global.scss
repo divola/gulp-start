@@ -1,0 +1,10 @@
+// Content images as background
+.ibg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  img {
+    height: 0;
+    width: 0;
+  }
+}

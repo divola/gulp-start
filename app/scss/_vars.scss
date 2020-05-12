@@ -1,0 +1,44 @@
+// <MIXINS>
+@mixin anim($time, $delay) {transition: all $time ease $delay;} //https://cubic-bezier.com/
+@mixin anim_cubic($time, $delay) {transition: all $time cubic-bezier(.68, -0.55, .265, 1.55) $delay;}
+@mixin center($h) {display: flex; flex-direction: column; text-align: center; align-items: stretch; justify-content: center; height: $h;}
+@mixin tr3d($x, $x, $z) {transform: translate3d($x, $x, $z);}
+// </MIXINS>
+
+// FONTS IMPORT
+@import "fonts";
+
+// <VARIABLES>
+// Default Font
+$fontfamily: "";
+
+// Colors
+$clr-font: #000;
+$clr-accent: #399;
+
+// min-width, max-width container
+$minw: 320;
+$maxw: 1170;
+
+// Bootstrap responsive breakpoints
+// https://getbootstrap.com/docs/4.1/layout/overview/
+$md1: $maxw+12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 575.98;
+// </VARIABLES>
+
+// <MAIN GRID>
+.container {max-width: $maxw+px; margin: 0 auto; width: 100%;
+  @media (max-width: $md1+px) {max-width: 970px;}
+  @media (max-width: $md2+px) {max-width: 750px;}
+  @media (max-width: $md3+px) {max-width: none; padding: 0 10px;}
+}
+// </MAIN GRID>
+
+// IMPORTS
+@import "reset";
+@import "libs";
+@import "global";
+@import "header";
+@import "footer";

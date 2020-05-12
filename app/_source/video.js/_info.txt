@@ -1,0 +1,106 @@
+7.3.0 - old lite version
+https://unpkg.com/browse/video.js@7.3.0/dist/alt/
+
+================================================= // Code
+
+<video-js class="video-js vjs-big-play-centered vjs-16-9" controls preload="none" poster="images/video-poster.jpg" data-setup="{}">
+  <source src="video.mp4" type="video/mp4" />
+</video-js>
+
+================================================= // Size settings
+
+https://docs.videojs.com/tutorial-layout.html
+
+- Fluid Mode
+
+There are three classes associated with fluid mode, vjs-fluid, vjs-16-9, and vjs-4-3.
+
+vjs-fluid turns on the general fluid mode which will wait for the video to load to calculate the aspect ratio of the video.
+
+- Fill Mode
+
+Fill mode will make the player fit and fill out its container. This is often useful if you have a responsive website and already have a container for Video.js that resizes properly to your design. It can be set either via a class or an option.
+
+If fill is enabled, it'll turn off fluid mode. If the player is configured with both fluid and fill options, fluid mode takes precedence.
+
+There's just one class for this one: vjs-fill. When available, Video.js will enter fill mode.
+
+
+/================================================= // Custom JS
+For full width - vjs-fill mode, for autoresize on small screens - vjs-16-9 or other
+For vjs-fill mode container height must be set
+/=================================================
+
+function adaptive_player () {
+  var w = $(window).outerWidth();
+  if (w < 992) {
+    $('.video-js').removeClass('vjs-fill').addClass('vjs-16-9');
+  } else {
+    $('.video-js').removeClass('vjs-16-9').addClass('vjs-fill');
+  }
+}
+$(window).resize(function() {
+  adaptive_player ();
+});
+adaptive_player ();
+
+// pause video when another start playing
+// https://stackoverflow.com/a/60848062/8740732
+$(".video-js").each(function (videoIndex) {
+  var videoId = $(this).attr("id");
+  videojs(videoId).ready(function() {
+    this.on("play", function(e) {
+      $(".video-js").each(function (index) {
+        if (videoIndex !== index) {
+          this.player.pause();
+        }
+      });
+    });
+  });
+});
+
+// Pause video when changing slick slide
+$('.slick-arrow').on('click', function () {
+  $(".video-js").each(function () {
+    var videoId = $(this).attr("id");
+    videojs(videoId).pause();
+  });
+});
+
+================================================= // Predefined styles
+
+/* Video.js plugin ---------- */
+
+.vjs-poster {
+  background-size: cover;
+}
+.vjs-has-started .vjs-poster {
+  display: none;
+}
+.vjs-ended {
+  .vjs-poster {
+    display: inline-block;
+  }
+  .vjs-big-play-button {
+    display: block;
+  }
+}
+.vjs-big-play-centered .vjs-big-play-button {
+  margin-top: 0;
+  transform: translateY(-50%);
+}
+.video-js .vjs-big-play-button {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: none;
+  transition: all .5s;
+}
+.video-js:hover .vjs-big-play-button {
+  transition: all .3s;
+}
+.video-js .vjs-big-play-button .vjs-icon-placeholder::before,
+.vjs-icon-play::before {
+  font-size: 25px;
+  top: 20px;
+}

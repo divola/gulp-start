@@ -1,0 +1,158 @@
+== Menu ==
+
+<nav class="menu">
+  <ul class="menu__list">
+    <li class="menu__list-item"><a class="menu__link" href="#">Home</a></li>
+  </ul>
+  <a class="menu__close" role="button" aria-hidden="true"></a>
+</nav>
+
+== Menu-JS ==
+
+// Menu button action
+$('.menu-icon').on('click', function () {
+  $('.header').addClass('show-menu');
+});
+$('.menu__close').on('click', function () {
+  $('.header').removeClass('show-menu');
+});
+
+== Menu-CSS ==
+
+.menu {
+  &__list {
+    display: flex;
+    @media (max-width: $md5+px) {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: -270px;
+      height: 100%;
+      width: 270px;
+      padding: 75px 10px 20px;
+      background-color: #fff;
+      overflow-y: auto;
+      z-index: 999;
+      @include anim(0.5s, 0s);
+    }
+    .show-menu & {
+      left: 0;
+    }
+  }
+  &__list-item {
+    margin-right: 82px;
+    @media (max-width: $md2+px) {
+      margin-right: 40px;
+    }
+    @media (max-width: $md3+px) {
+      margin-right: 20px;
+    }
+    @media (max-width: $md5+px) {
+      margin: 5px 0;
+    }
+  }
+  &__link {
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    position: relative;
+    @media (max-width: $md5+px) {
+      display: block;
+      font-size: 20px;
+      padding: 5px 0;
+      color: $clr-main;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background-color: #fff;
+      @include anim(0.3s, 0s);
+    }
+    &:hover::before,
+    &:focus::before {
+      left: 0;
+      width: 100%;
+    }
+  }
+  &__close {
+    display: none;
+    @media (max-width: $md5+px) {
+      display: block;
+      visibility: hidden;
+      opacity: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(black, .8);
+      cursor: pointer;
+      @include anim(0.5s, 0s);
+      z-index: 1;
+      .show-menu & {
+        left: 270px;
+        visibility: visible;
+        opacity: 1;
+      }
+      @media (max-width: 400px) {
+        &::before {
+          content: "x";
+          position: absolute;
+          top: 25px;
+          left: 10px;
+          width: 24px;
+          height: 24px;
+          font-size: 20px;
+          line-height: 18px;
+          background-color: #fff;
+          border-radius: 50%;
+          color: #000;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+== Button ==
+
+<div class="menu-icon" role="button" aria-hidden="true">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+== Button-CSS ==
+
+.menu-icon {
+  display: none;
+  position: relative;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  span {
+    display: block;
+    position: absolute;
+    top: 9px;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    &:first-child {
+      top: 0;
+    }
+    &:last-child {
+      top: auto;
+      bottom: 0;
+    }
+  }
+  @media (max-width: $md5+px) {
+    display: block;
+  }
+  .show-menu & {
+    display: none;
+  }
+}
