@@ -9,7 +9,7 @@ const gulp         = require('gulp'),
       autoprefixer = require('gulp-autoprefixer'),
       cleanCSS     = require('gulp-clean-css'),
       gcmq         = require('gulp-group-css-media-queries'),
-      kit          = require('gulp-kit'),
+      kit          = require('gulp-kit-2'),
       prompt       = require('gulp-prompt');
 
 gulp.task('kit', function() {
@@ -42,6 +42,8 @@ gulp.task('css', function() {
 
 gulp.task('js', function() {
   return gulp.src([
+    'app/_source/dynamic_adapt/dynamic.js',
+    'node_modules/unfocus/dist/unfocus.js',
     'node_modules/slick-carousel/slick/slick.js',
     // 'app/_source/video.js/video.core.novtt.min.js'
   ])
@@ -90,13 +92,15 @@ gulp.task('export', function () {
           .pipe(gulp.dest('dist/js'));
       } else {
         gulp.src('app/css/**/*.css')
-          .pipe(cleanCSS())
+          .pipe(cleanCSS({debug: true}, (details) => {
+            console.log(`${details.name}: ${details.stats.originalSize}`);
+            console.log(`${details.name}: ${details.stats.minifiedSize}`);
+          }))
           .pipe(gulp.dest('dist/css'));
 
         gulp.src('app/js/**/*.js')
           .pipe(uglify({output:{comments:false}}))
           .pipe(gulp.dest('dist/js'));
-
       }
       // Copy remaining files
       gulp.src('app/fonts/**/*.{woff,woff2,svg,eot}')

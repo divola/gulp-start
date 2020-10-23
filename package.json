@@ -1,9 +1,10 @@
 {
   "name": "gulp-start",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Gulp Strater Kit",
   "main": "gulpfile.js",
   "author": "Alex Divola",
+  "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "del": "^5.1.0",
@@ -12,14 +13,15 @@
     "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.1",
     "gulp-group-css-media-queries": "^1.2.2",
-    "gulp-kit": "^0.3.0",
+    "gulp-kit-2": "^0.2.1",
     "gulp-prompt": "^1.2.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-uglify-es": "^2.0.0"
   },
   "dependencies": {
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "unfocus": "^1.0.1"
   },
   "browserslist": "> .5% or last 2 versions"
 }

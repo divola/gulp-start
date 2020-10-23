@@ -16,20 +16,23 @@ $fontfamily: '';
 $clr-font: #000;
 $clr-accent: #399;
 
-// min-width, max-width container
-$minw: 320;
-$maxw: 1170;
+// container min-width, max-width
+$minWidth: 320;
+$maxWidth: 1170;
 
 // Bootstrap responsive breakpoints
 // https://getbootstrap.com/docs/4.1/layout/overview/
-$md1: $maxw+12;
+$md1: $maxWidth + 12;
 $md2: 991.98;
 $md3: 767.98;
 $md4: 575.98;
 // </VARIABLES>
 
 // <MAIN GRID>
-.container {max-width: $maxw+px; margin: 0 auto; width: 100%;
+.container {
+  max-width: $maxWidth + px;
+  margin: 0 auto;
+
   @media (max-width: $md1+px) {max-width: 970px;}
   @media (max-width: $md2+px) {max-width: 750px;}
   @media (max-width: $md3+px) {max-width: none; padding: 0 10px;}

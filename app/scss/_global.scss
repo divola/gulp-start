@@ -1,3 +1,8 @@
+// Disable scrolling when opening modals
+body.lock {
+  overflow: hidden;
+}
+
 // Content image as block background
 .ibg {
   background-repeat: no-repeat;
