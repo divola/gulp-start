@@ -1,0 +1,47 @@
+<input class="sr-only" type="checkbox" id="remember" name="remember" checked>
+<label for="remember">Запомнить меня</label>
+
+
+=== CSS ===
+
+// Label styled like a checkbox. Input hidden by class .sr-only
+[type="checkbox"] + label {
+  position: relative;
+  padding-left: 20px;
+  user-select: none;
+  cursor: pointer;
+}
+[type="checkbox"] + label::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #d2d2d2;
+  border-radius: 4px;
+  transition: background-color .2s ease-in-out, border .2s ease-in-out;
+}
+[type="checkbox"]:checked + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg width='14' height='12' viewBox='0 0 14 12' xmlns='http://www.w3.org/2000/svg'><path d='M4.10351 8.89548L1.45582 6.09578L0 7.6352L4.13584 12L14 1.56934L12.5159 0L4.10351 8.89548Z' fill='rgb(255, 255, 255)' /></svg>");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-color: cornflowerblue;
+  background-size: 10px 8px;
+  border-color: cornflowerblue;
+}
+[type="checkbox"]:not(:checked) + label:hover::before {
+  border-color: #adadad;
+}
+[type="checkbox"]:disabled + label::before,
+[type="checkbox"]:disabled + label:hover::before {
+  background-color: #ddd;
+  border-color: #d2d2d2;
+}
+[type="checkbox"]:checked:disabled + label::before {
+  background-image: url("data:image/svg+xml;utf8,<svg width='14' height='12' viewBox='0 0 14 12' xmlns='http://www.w3.org/2000/svg'><path d='M4.10351 8.89548L1.45582 6.09578L0 7.6352L4.13584 12L14 1.56934L12.5159 0L4.10351 8.89548Z' fill='rgb(190, 190, 190)' /></svg>");
+}
+[type="checkbox"]:focus + label::before {
+  outline: 1px dashed #000;
+  outline-offset: 2px;
+}

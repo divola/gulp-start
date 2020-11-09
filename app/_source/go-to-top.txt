@@ -1,0 +1,57 @@
+== HTML ==
+
+<div class="go-to-top"></div>
+
+== CSS ==
+
+.go-to-top {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 6px;
+  bottom: 6px;
+  width: 36px;
+  height: 36px;
+  background-color: #263238;
+  transform: translate3d(0, 60px, 0);
+  transition: transform .4s cubic-bezier(.55, 0, .05, 1.1) 0s, opacity .3s;
+  z-index: 99;
+  cursor: pointer;
+}
+.go-to-top::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin-top: 5px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  transform: rotateZ(-45deg);
+}
+.go-to-top:hover {
+  opacity: .85;
+}
+.go-to-top.show-up {
+  transform: translate3d(0, 0, 0);
+}
+
+== JS ==
+
+// Go to top button
+$('.go-to-top').on('click', function () {
+  $('html, body').animate({scrollTop: 0}, 700);
+  return false;
+});
+
+var $goto_button = $('.go-to-top');
+if ($goto_button.length) {
+  $(document).scroll(function () {
+    var y = $(this).scrollTop();
+    if (y > 500) {
+      $goto_button.addClass('show-up');
+    } else {
+      $goto_button.removeClass('show-up');
+    }
+  });
+}

@@ -1,3 +1,7 @@
+/*
+** Global Styles
+*/
+
 // Disable scrolling when opening modals
 body.lock {
   overflow: hidden;
@@ -18,4 +22,19 @@ body.lock {
     opacity: 0;
     visibility: hidden;
   }
+}
+
+// Visually hidden but not for screen readers
+.sr-only {
+  border: 0; 
+  clip: rect(0 0 0 0); 
+  -webkit-clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  width: 1px;
+  height: 1px; 
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
 }

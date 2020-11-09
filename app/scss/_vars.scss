@@ -5,10 +5,6 @@
 @mixin tr3d($x, $x, $z) {transform: translate3d($x, $x, $z);}
 // </MIXINS>
 
-// FONTS IMPORT
-@import "fonts";
-
-// <VARIABLES>
 // Default Font
 $fontfamily: '';
 
@@ -26,7 +22,12 @@ $md1: $maxWidth + 12;
 $md2: 991.98;
 $md3: 767.98;
 $md4: 575.98;
-// </VARIABLES>
+
+// IMPORTS-1
+@import "reset";
+@import "fonts";
+@import "libs";
+@import "global";
 
 // <MAIN GRID>
 .container {
@@ -39,9 +40,7 @@ $md4: 575.98;
 }
 // </MAIN GRID>
 
-// IMPORTS
-@import "reset";
-@import "libs";
-@import "global";
+// IMPORTS-2
 @import "header";
+@import "main";
 @import "footer";
